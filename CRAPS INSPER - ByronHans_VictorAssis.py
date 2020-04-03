@@ -153,7 +153,7 @@ while craps_insper == True:
               print('')
               time.sleep(1)
               print(Fore.RED + "Desculpe mas você não possui saldo suficiente para uma nova rodada.O jogo será encerrado!")
-              break #como o jogador não tem saldo suficiente, esse if faz com que o jogo acabe
+              break 
               
               
           else: 
@@ -184,16 +184,15 @@ while craps_insper == True:
               escolha = input(Fore.CYAN + "Digite uma das opções acima em maiúsculo: ")
               
               #impede o jogador de digitar opções inexistentes
-              while escolha != tipos_de_aposta[0] and escolha != tipos_de_aposta[1] and escolha != tipos_de_aposta[2] and escolha != tipos_de_aposta[3]:
+              while escolha not in tipos_de_aposta:
                   print('')
                   time.sleep(1)
                   print(Fore.RED + "Opção inválida, digite novamente!")
                   print('')
                   time.sleep(1)
                   escolha = input(Fore.CYAN + "Digite uma das opções acima em maiúsculo: ")
-             
-                
-                  
+                            
+ 
               #desenvolvendo aposta Pass Line Bet    
               if escolha == "PASS LINE BET":
                   dado_01 = random.randint(1,6)
@@ -202,8 +201,8 @@ while craps_insper == True:
                   print('')
                   time.sleep(1)
                   rodada = (pass_line_bet_comeout(dado_01,dado_02))
-                  if rodada == "A soma dos dados foi um número entre (7 ou 11). Você venceu esta rodada!":
-                      fichas += aposta + 10
+                  if rodada == "A soma dos dados foi 7 ou 11. Você venceu esta aposta!":
+                      fichas += (aposta + 10)
                       print(rodada)
                       print('')
                       time.sleep(1)
@@ -214,15 +213,13 @@ while craps_insper == True:
                       
                       
                       
-                  elif rodada == "A soma dos dados foi um número entre (2,3,12). Você perdeu esta rodada por tirar um dos números CRAPS.":
+                  elif rodada == "A soma dos dados foi 2, 3 ou 12. Você perdeu esta aposta!":
                       fichas -= aposta
                       print(rodada)
                       print('')
                       time.sleep(1)
                       print(Fore.BLUE + "Seu saldo de fichas atual é de {0}.".format(fichas))
-                      
-                      
-                      
+                                                                 
                       
                       
                   else: 
@@ -241,7 +238,7 @@ while craps_insper == True:
                       escolha = input(Fore.CYAN + "Digite uma das opções acima em maiúsculo: ")
               
                       #impede o jogador de digitar opções inexistentes
-                      while escolha != tipos_de_aposta[0] and escolha != tipos_de_aposta[1] and escolha != tipos_de_aposta[2] and escolha != tipos_de_aposta[3]:
+                      while escolha not in tipos_de_aposta:
                           print('')
                           time.sleep(1)
                           print(Fore.RED + "Opção inválida, digite novamente!")
