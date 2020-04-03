@@ -152,7 +152,7 @@ while craps_insper == True:
           if fichas == 0:
               print('')
               time.sleep(1)
-              print(Fore.RED + "Desculpe mas você não possui saldo suficiente para uma nova rodada.O jogo será encerrado!")
+              print(Fore.RED + "Desculpe mas você não possui saldo suficiente para uma nova rodada. O jogo será encerrado!")
               break 
               
               
@@ -202,7 +202,7 @@ while craps_insper == True:
                   time.sleep(1)
                   rodada = (pass_line_bet_comeout(dado_01,dado_02))
                   if rodada == "A soma dos dados foi 7 ou 11. Você venceu esta aposta!":
-                      fichas += (aposta + 10)
+                      fichas += (aposta + aposta)
                       print(rodada)
                       print('')
                       time.sleep(1)
@@ -228,7 +228,7 @@ while craps_insper == True:
                       print (rodada)
                       print('')
                       time.sleep(1)
-                      print(Fore.CYAN + "Você está na fase POINT; escolha seu tipo de aposta:")
+                      print(Fore.CYAN + "Você está na fase POINT. Escolha seu tipo de aposta:")
                       print('')
                       time.sleep(1)
                       print(Style.RESET_ALL)
@@ -266,7 +266,7 @@ while craps_insper == True:
                               
                               
                           else: 
-                              fichas += aposta  
+                              fichas += (aposta * 2)  
                               print('')
                               time.sleep(1)
                               print(rodada_point)
