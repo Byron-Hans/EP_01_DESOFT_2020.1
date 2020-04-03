@@ -117,7 +117,7 @@ while fichas < 0:
     print(Fore.RED + "Valor inválido! Por favor, tente novamente.")
     print('')
     time.sleep(1)
-    fichas = int(input(Fore.CYAN + "Digite aqui o número de fichas que desja comprar: ")) 
+    fichas = int(input(Fore.CYAN + "Digite aqui o número de fichas que deseja comprar: ")) 
 
 
 print('')
