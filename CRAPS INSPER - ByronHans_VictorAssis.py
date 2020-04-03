@@ -22,14 +22,9 @@ soma_dados = dado_01 + dado_02
 craps_insper = True 
 
 
-
-
-
 #a partir daqui eu começo a fazer as funções dos tipos de jogada. 
 #as funções estão simplificadas e n produzem alterações no saldo e nem sempre fala quanto
 #ganhou ou perdeu, pensei que seria mais tranquilo fazer isso fora da função. 
-#
-#
 #
 #
 #
@@ -37,17 +32,13 @@ craps_insper = True
 #fase desse tipo de aposta, abrindo margem pra mudar para o modo point.
 def pass_line_bet_comeout(dado_01, dado_02):
     soma = dado_01 + dado_02
-    resultado = 0
     if soma == 7 or soma == 11:
-        resultado = "A soma dos dados foi um número entre (7 ou 11). Você venceu esta rodada!"
+        resultado = "A soma dos dados foi 7 ou 11. Você venceu esta aposta!"
     elif soma == 2 or soma == 3 or soma == 12: 
-        resultado = "A soma dos dados foi um número entre (2,3,12). Você perdeu esta rodada por tirar um dos números CRAPS."
+        resultado = "A soma dos dados foi 2, 3 ou 12. Você perdeu esta aposta!"
     else: 
-        resultado = "Você migrou para a fase POINT!"
+        resultado = "Você passou para a fase POINT!"
     return resultado
-
-
-
 
 
 #como quando muda de modo o jogador pode escolher outro tipo de aposta tive que 
@@ -61,10 +52,10 @@ def pass_line_bet_point(soma_dados):
     rodada = True
     while rodada == True:
         if soma == 7 :
-            resultado = "A soma deu 7, você perdeu esta rodada!"
+            resultado = "A soma deu 7, você perdeu esta aposta!"
             rodada = False
         elif soma == soma_dados:
-            resultado = "A soma dos dados é igual ao POINT! Você venceu esta rodada!"
+            resultado = "A soma dos dados é igual ao POINT! Você venceu esta aposta!"
             rodada = False
         else:
             dado_1 = random.randint(1,6)
@@ -73,26 +64,19 @@ def pass_line_bet_point(soma_dados):
     return resultado
 
 
-
-
-
-
 #função que define a jogada field
 def field(dado_01, dado_02):
     soma = dado_01 + dado_02 
     resultado = 0 
     if soma >=5 and soma <= 8:
-        resultado = "A soma dos dados foi um número de 5 à 8, portanto você perdeu a rodada!"
+        resultado = "A soma dos dados foi um número de 5 à 8, portanto você perdeu a aposta!"
     elif soma == 2:
-        resultado = "A soma dos dados deu 2 portanto você ganhou esta rodada recebendo o valor da sua aposta mais um bônus com o dobro do valor da sua aposta!"
+        resultado = "A soma dos dados deu 2 portanto você ganhou esta aposta. Recebe o dobro do valor que apostou!"
     elif soma == 12: 
-        resultado = "A soma dos dados deu 12, portanto você ganhou esta rodada recebendo o valor da sua aposta mais um bônus com o triplo do valor da sua aposta!"
+        resultado = "A soma dos dados deu 12, portanto você ganhou esta aposta. Recebe o triplo do valor que apostou!"
     else:
-        resultado = "A soma dos dados deu um número entre (3,4,9,10,11), portanto você ganhou esta rodada recebendo o valor da sua aposta mais um bônus no mesmo valor da sua aposta!"
+        resultado = "A soma dos dados deu 3,4,9,10 ou 11, portanto você ganhou esta aposta. Recebe o valor que apostou!"
     return resultado 
-
-
-
 
 
 #função que define a jogada any craps
@@ -105,19 +89,14 @@ def any_craps(dado_01, dado_02):
     return resultado 
 
 
-
-
 #função que define a jogada twelve
 def twelve(dado_01, dado_02):
     soma = dado_01 + dado_02 
     if soma == 12: 
-        resultado = "A soma dos dados deu 12, portanto você venceu esta rodada!"
+        resultado = "A soma dos dados deu 12, portanto você venceu esta aposta. Recebe trinta vezes o valor que apostou!"
     else: 
-        resultado = "A soma dos dados deu um número entre 2 e 11, portanto você perdeu a rodada!"
+        resultado = "A soma dos dados deu um número diferente de 12, portanto você perdeu a aposta!"
     return resultado
-
-
-
 
 
 #a partir daqui começamos a lidar com a mecânica do jogo
@@ -135,23 +114,15 @@ fichas = int(input(Fore.CYAN + "Digite aqui o número de fichas que desja compra
 while fichas < 0: 
     print('')
     time.sleep(1)
-    print(Fore.RED + "Valor inválido! Por favor tente novamente.")
+    print(Fore.RED + "Valor inválido! Por favor, tente novamente.")
     print('')
     time.sleep(1)
     fichas = int(input(Fore.CYAN + "Digite aqui o número de fichas que desja comprar: ")) 
-
-    
-    
-
-
 
 
 print('')
 time.sleep(1)
 print(Fore.BLUE + "Seu saldo de fichas atual é de {0}.".format(fichas))
-
-
-
 
 
 
