@@ -7,7 +7,6 @@ Created on Fri Apr  3 02:47:55 2020
 
 
 #imporatndo random pro sistema dos dadinhos
-#imporatndo random pro sistema dos dadinhos
 import random
 import time
 from colorama import Fore, Style
@@ -42,7 +41,7 @@ def pass_line_bet_comeout(dado_01, dado_02):
     if soma == 7 or soma == 11:
         resultado = "A soma dos dados foi um número entre (7 ou 11). Você venceu esta rodada!"
     elif soma == 2 or soma == 3 or soma == 12: 
-        resultado = "A somda dos dados foi um número entre (2,3,12). Você perdeu esta rodada por tirar um dos números CRAPS."
+        resultado = "A soma dos dados foi um número entre (2,3,12). Você perdeu esta rodada por tirar um dos números CRAPS."
     else: 
         resultado = "Você migrou para a fase POINT!"
     return resultado
@@ -149,7 +148,7 @@ while fichas < 0:
 
 print('')
 time.sleep(1)
-print(Fore.BLUE + "Seu saldo de ficha atual é de {0}.".format(fichas))
+print(Fore.BLUE + "Seu saldo de fichas atual é de {0}.".format(fichas))
 
 
 
@@ -163,7 +162,7 @@ while craps_insper == True:
       while nova_rodada != "s" and nova_rodada != "n": 
           print()
           time.sleep(1)
-          print(Fore.CYAN + "Resposta inválida, por favor tente novamente!")
+          print(Fore.RED + "Resposta inválida, por favor tente novamente!")
           print('')
           time.sleep(1)
           nova_rodada = input(Fore.CYAN + "Deseja iniciar  uma nova rodada? (s/n): ")
@@ -198,13 +197,15 @@ while craps_insper == True:
                   time.sleep(1)
                   aposta = int(input("Escolha um valor para apostar: "))
                   
-              #aqui começa a escolha das as apostas e  a mecânica de aposta    
+              #aqui começa a escolha das as apostas e  a mecânica de aposta 
+              fichas -= aposta
               print('')
               time.sleep(1)
               print(Fore.CYAN + "Você está na fase COMEOUT; escolha seu tipo de aposta:")
               print('')
               time.sleep(1)
-              print(Fore.MAGENTA + tipos_de_aposta)
+              print(Style.RESET_ALL)
+              print(tipos_de_aposta)
               
               
               print('')
@@ -226,29 +227,81 @@ while craps_insper == True:
               if escolha == "PASS LINE BET":
                   dado_01 = random.randint(1,6)
                   dado_02 = random.randint(1,6)
+                  soma_dados = dado_01 + dado_02
                   print('')
                   time.sleep(1)
                   rodada = (pass_line_bet_comeout(dado_01,dado_02))
-
-
-
-
-
-
-
-
-        
-
-
-        
-        
-
-   
-
-
-
-
-    
-    
-    
-    
+                  if rodada == "A soma dos dados foi um número entre (7 ou 11). Você venceu esta rodada!":
+                      fichas += aposta + 10
+                      print(rodada)
+                      print('')
+                      time.sleep(1)
+                      print(Fore.BLUE + "Seu saldo de fichas atual é de {0}.".format(fichas))
+                      
+                      
+                      
+                      
+                      
+                      
+                  elif rodada == "A soma dos dados foi um número entre (2,3,12). Você perdeu esta rodada por tirar um dos números CRAPS.":
+                      fichas -= aposta
+                      print(rodada)
+                      print('')
+                      time.sleep(1)
+                      print(Fore.BLUE + "Seu saldo de fichas atual é de {0}.".format(fichas))
+                      
+                      
+                      
+                      
+                      
+                  else: 
+                      print('')
+                      time.sleep(1)
+                      print (rodada)
+                      print('')
+                      time.sleep(1)
+                      print(Fore.CYAN + "Você está na fase POINT; escolha seu tipo de aposta:")
+                      print('')
+                      time.sleep(1)
+                      print(Style.RESET_ALL)
+                      print(tipos_de_aposta)
+                      print('')
+                      time.sleep(1)
+                      escolha = input(Fore.CYAN + "Digite uma das opções acima em maiúsculo: ")
+              
+                      #impede o jogador de digitar opções inexistentes
+                      while escolha != tipos_de_aposta[0] and escolha != tipos_de_aposta[1] and escolha != tipos_de_aposta[2] and escolha != tipos_de_aposta[3]:
+                          print('')
+                          time.sleep(1)
+                          print(Fore.RED + "Opção inválida, digite novamente!")
+                          print('')
+                          time.sleep(1)
+                          escolha = input(Fore.CYAN + "Digite uma das opções acima em maiúsculo: ")
+             
+                
+                  
+                      #desenvolvendo aposta Pass Line Bet    
+                      if escolha == "PASS LINE BET":
+                          print('')
+                          time.sleep(1)
+                          print(" O POINT que você deve atingir é {0}.".format(soma_dados))
+                          rodada_point = pass_line_bet_point(soma_dados)
+                          
+                          if rodada_point == "A soma deu 7, você perdeu esta rodada!":
+                              fichas -= aposta
+                              print('')
+                              time.sleep(1)
+                              print(rodada_point)
+                              print('')
+                              time.sleep(1)
+                              print(Fore.BLUE + "Seu saldo de fichas atual é de {0}.".format(fichas))
+                              
+                              
+                          else: 
+                              fichas += aposta  
+                              print('')
+                              time.sleep(1)
+                              print(rodada_point)
+                              print('')
+                              time.sleep(1)
+                              print(Fore.BLUE + "Seu saldo de fichas atual é de {0}.".format(fichas))
