@@ -250,18 +250,17 @@ while craps_insper == True:
                       if escolha == "PASS LINE BET":
                           print('')
                           time.sleep(1)
-                          print(" O POINT que você deve atingir é {0}.".format(soma_dados))
+                          print("O POINT que você deve atingir é {0}.".format(soma_dados))
                           rodada_point = pass_line_bet_point(soma_dados)
                           
                           if rodada_point == "A soma deu 7, você perdeu esta rodada!":
-                              fichas -= aposta
                               print('')
                               time.sleep(1)
                               print(rodada_point)
                               print('')
                               time.sleep(1)
                               print(Fore.BLUE + "Seu saldo de fichas atual é de {0}.".format(fichas))
-                              
+
                               
                           else: 
                               fichas += (aposta * 2)  
