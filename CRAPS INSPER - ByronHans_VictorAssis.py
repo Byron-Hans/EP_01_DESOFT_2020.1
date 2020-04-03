@@ -202,7 +202,7 @@ while craps_insper == True:
                   time.sleep(1)
                   rodada = (pass_line_bet_comeout(dado_01,dado_02))
                   if rodada == "A soma dos dados foi 7 ou 11. Você venceu esta aposta!":
-                      fichas += (aposta + aposta)
+                      fichas += (aposta * 2)
                       print(rodada)
                       print('')
                       time.sleep(1)
@@ -212,9 +212,7 @@ while craps_insper == True:
                       
                       
                       
-                      
                   elif rodada == "A soma dos dados foi 2, 3 ou 12. Você perdeu esta aposta!":
-                      fichas -= aposta
                       print(rodada)
                       print('')
                       time.sleep(1)
