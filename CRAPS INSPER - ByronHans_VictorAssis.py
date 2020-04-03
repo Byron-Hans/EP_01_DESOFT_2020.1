@@ -169,10 +169,9 @@ while craps_insper == True:
                   aposta = int(input("Escolha um valor para apostar: "))
                   
               #aqui começa a escolha das as apostas e  a mecânica de aposta 
-              fichas -= aposta
               print('')
               time.sleep(1)
-              print(Fore.CYAN + "Você está na fase COMEOUT; escolha seu tipo de aposta:")
+              print(Fore.CYAN + "Você está na fase COME OUT; escolha seu tipo de aposta:")
               print('')
               time.sleep(1)
               print(Style.RESET_ALL)
@@ -202,7 +201,7 @@ while craps_insper == True:
                   time.sleep(1)
                   rodada = (pass_line_bet_comeout(dado_01,dado_02))
                   if rodada == "A soma dos dados foi 7 ou 11. Você venceu esta aposta!":
-                      fichas += (aposta * 2)
+                      fichas += (aposta)
                       print(rodada)
                       print('')
                       time.sleep(1)
@@ -213,6 +212,7 @@ while craps_insper == True:
                       
                       
                   elif rodada == "A soma dos dados foi 2, 3 ou 12. Você perdeu esta aposta!":
+                      fichas -= aposta
                       print(rodada)
                       print('')
                       time.sleep(1)
@@ -254,6 +254,7 @@ while craps_insper == True:
                           rodada_point = pass_line_bet_point(soma_dados)
                           
                           if rodada_point == "A soma deu 7, você perdeu esta rodada!":
+                              fichas -= aposta
                               print('')
                               time.sleep(1)
                               print(rodada_point)
@@ -263,7 +264,7 @@ while craps_insper == True:
 
                               
                           else: 
-                              fichas += (aposta * 2)  
+                              fichas += (aposta)  
                               print('')
                               time.sleep(1)
                               print(rodada_point)
