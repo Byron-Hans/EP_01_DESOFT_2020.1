@@ -1,5 +1,4 @@
 
-
 #imporatndo random pro sistema dos dadinhos
 import random
 import time
@@ -65,11 +64,11 @@ def field(dado_01, dado_02):
     if soma >=5 and soma <= 8:
         resultado = "A soma dos dados foi um número de 5 à 8, portanto você perdeu a aposta!"
     elif soma == 2:
-        resultado = "A soma dos dados deu 2 portanto você ganhou esta aposta. Recebe o dobro do valor que apostou!"
+        resultado = "A soma dos dados deu 2 portanto você ganhou esta aposta. Receba o dobro do valor que apostou!"
     elif soma == 12: 
-        resultado = "A soma dos dados deu 12, portanto você ganhou esta aposta. Recebe o triplo do valor que apostou!"
+        resultado = "A soma dos dados deu 12, portanto você ganhou esta aposta. Receba o triplo do valor que apostou!"
     else:
-        resultado = "A soma dos dados deu 3,4,9,10 ou 11, portanto você ganhou esta aposta. Recebe o valor que apostou!"
+        resultado = "A soma dos dados deu 3,4,9,10 ou 11, portanto você ganhou esta aposta. Receba o valor que apostou!"
     return resultado 
 
 
@@ -77,9 +76,9 @@ def field(dado_01, dado_02):
 def any_craps(dado_01, dado_02):
     soma = dado_01 + dado_02
     if soma == 2 or soma == 3 or soma  == 12:
-        resultado = "A soma dos dados deu um número entre (2,3,12), portanto você venceu esta rodada e ganhou 7 vezes o valor da sua aposta!"
+        resultado = "A soma dos dados deu 2, 3 ou 12, portanto você venceu esta rodada e ganhou 7 vezes o valor da sua aposta!"
     else: 
-        resultado = "A soma dos dados deu um número entre (4,5,6,7,8,9,10,11), portanto você perdeu a rodada!"
+        resultado = "A soma dos dados deu 4, 5, 6, 7, 8, 9, 10, 11, portanto você perdeu a rodada!"
     return resultado 
 
 
@@ -87,7 +86,7 @@ def any_craps(dado_01, dado_02):
 def twelve(dado_01, dado_02):
     soma = dado_01 + dado_02 
     if soma == 12: 
-        resultado = "A soma dos dados deu 12, portanto você venceu esta aposta. Recebe trinta vezes o valor que apostou!"
+        resultado = "A soma dos dados deu 12, portanto você venceu esta aposta. Receba trinta vezes o valor que apostou!"
     else: 
         resultado = "A soma dos dados deu um número diferente de 12, portanto você perdeu a aposta!"
     return resultado
@@ -185,9 +184,89 @@ while craps_insper == True:
                 time.sleep(1)
                 escolha = input(Fore.CYAN + "Digite uma das opções acima em maiúsculo: ")
                             
- 
+            if escolha == "FIELD":
+                dado_01 = random.randint(1,6)
+                dado_02 = random.randint(1,6)
+                soma_dados = dado_01 + dado_02
+                print('')
+                time.sleep(1)
+                rodada = (field(dado_01,dado_02))
+                if rodada == "A soma dos dados foi um número de 5 à 8, portanto você perdeu a aposta!":
+                    fichas -= aposta
+                    print (rodada)
+                    print ('')
+                    time.sleep(1)
+                    print(Fore.BLUE + "Seu saldo de fichas atual é de {0}.".format(fichas))
+
+                elif rodada == "A soma dos dados deu 2 portanto você ganhou esta aposta. Receba o dobro do valor que apostou!":
+                    fichas += (2 * aposta)
+                    print (rodada)
+                    print ('')
+                    time.sleep(1)
+                    print(Fore.BLUE + "Seu saldo de fichas atual é de {0}.".format(fichas))
+
+                elif rodada == "A soma dos dados deu 12, portanto você ganhou esta aposta. Receba o triplo do valor que apostou!":
+                    fichas += (3 * aposta)
+                    print (rodada)
+                    print ('')
+                    time.sleep(1)
+                    print(Fore.BLUE + "Seu saldo de fichas atual é de {0}.".format(fichas))
+                
+                elif rodada == "A soma dos dados deu 3,4,9,10 ou 11, portanto você ganhou esta aposta. Receba o valor que apostou!":
+                    fichas += (aposta)
+                    print (rodada)
+                    print ('')
+                    time.sleep(1)
+                    print(Fore.BLUE + "Seu saldo de fichas atual é de {0}.".format(fichas))
+
+            elif escolha == "ANY CRAPS":
+                dado_01 = random.randint(1,6)
+                dado_02 = random.randint(1,6)
+                soma_dados = dado_01 + dado_02
+                print('')
+                time.sleep(1)
+                rodada = any_craps(dado_01, dado_02)
+                if rodada == "A soma dos dados deu 2, 3 ou 12, portanto você venceu esta rodada e ganhou 7 vezes o valor da sua aposta!":
+                    fichas += (7 * aposta)
+                    print (rodada)
+                    print ('')
+                    time.sleep(1)
+                    print(Fore.BLUE + "Seu saldo de fichas atual é de {0}.".format(fichas))
+                
+                elif rodada == "A soma dos dados deu 4, 5, 6, 7, 8, 9, 10, 11, portanto você perdeu a rodada!":
+                    fichas -= aposta
+                    print (rodada)
+                    print ('')
+                    time.sleep(1)
+                    print(Fore.BLUE + "Seu saldo de fichas atual é de {0}.".format(fichas))
+                
+            elif escolha == "TWELVE":
+                dado_01 = random.randint(1,6)
+                dado_02 = random.randint(1,6)
+                soma_dados = dado_01 + dado_02
+                print('')
+                time.sleep(1)
+                rodada = (twelve(dado_01,dado_02))
+                if rodada == "A soma dos dados deu 12, portanto você venceu esta aposta. Receba trinta vezes o valor que apostou!":
+                    fichas += (30 * aposta)
+                    print (rodada)
+                    print ('')
+                    time.sleep(1)
+                    print(Fore.BLUE + "Seu saldo de fichas atual é de {0}.".format(fichas))
+                
+                elif rodada == "A soma dos dados deu um número diferente de 12, portanto você perdeu a aposta!":
+                    fichas -= aposta
+                    print (rodada)
+                    print ('')
+                    time.sleep(1)
+                    print(Fore.BLUE + "Seu saldo de fichas atual é de {0}.".format(fichas))
+
+
+
+
+
               #desenvolvendo aposta Pass Line Bet    
-            if escolha == "PASS LINE BET":
+            elif escolha == "PASS LINE BET":
                 dado_01 = random.randint(1,6)
                 dado_02 = random.randint(1,6)
                 soma_dados = dado_01 + dado_02
@@ -247,7 +326,7 @@ while craps_insper == True:
                         print("O POINT que você deve atingir é {0}.".format(soma_dados))
                         rodada_point = pass_line_bet_point(soma_dados)
                           
-                        if rodada_point == "A soma deu 7, você perdeu esta rodada!":
+                        if rodada_point == "A soma deu 7, você perdeu esta aposta!":
                             fichas -= aposta
                             print('')
                             time.sleep(1)
