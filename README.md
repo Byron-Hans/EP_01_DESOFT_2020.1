@@ -9,4 +9,4 @@ Byron Hans Brito Okenna Egonu
 Email: byronhboe@al.insper.edu.br
 
 Victor Luis Gama de Assis
-email: 
+email: victorlga@al.insper.edu.br
