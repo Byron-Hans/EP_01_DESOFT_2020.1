@@ -64,11 +64,11 @@ def field(dado_01, dado_02):
     if soma >=5 and soma <= 8:
         resultado = "A soma dos dados foi um número de 5 à 8, portanto você perdeu a aposta!"
     elif soma == 2:
-        resultado = "A soma dos dados deu 2 portanto você ganhou esta aposta. Receba o dobro do valor que apostou!"
+        resultado = "A soma dos dados deu 2, portanto você ganhou esta aposta. Receba o dobro do valor que apostou!"
     elif soma == 12: 
         resultado = "A soma dos dados deu 12, portanto você ganhou esta aposta. Receba o triplo do valor que apostou!"
     else:
-        resultado = "A soma dos dados deu 3,4,9,10 ou 11, portanto você ganhou esta aposta. Receba o valor que apostou!"
+        resultado = "A soma dos dados deu 3, 4, 9, 10 ou 11, portanto você ganhou esta aposta. Receba o valor que apostou!"
     return resultado 
 
 
@@ -198,7 +198,7 @@ while craps_insper == True:
                     time.sleep(1)
                     print(Fore.BLUE + "Seu saldo de fichas atual é de {0}.".format(fichas))
 
-                elif rodada == "A soma dos dados deu 2 portanto você ganhou esta aposta. Receba o dobro do valor que apostou!":
+                elif rodada == "A soma dos dados deu 2, portanto você ganhou esta aposta. Receba o dobro do valor que apostou!":
                     fichas += (2 * aposta)
                     print (rodada)
                     print ('')
@@ -212,7 +212,7 @@ while craps_insper == True:
                     time.sleep(1)
                     print(Fore.BLUE + "Seu saldo de fichas atual é de {0}.".format(fichas))
                 
-                elif rodada == "A soma dos dados deu 3,4,9,10 ou 11, portanto você ganhou esta aposta. Receba o valor que apostou!":
+                elif rodada == "A soma dos dados deu 3, 4, 9, 10 ou 11, portanto você ganhou esta aposta. Receba o valor que apostou!":
                     fichas += (aposta)
                     print (rodada)
                     print ('')
